@@ -5,414 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Bench FC | Your Seat to the Beautiful Game</title>
   <meta name="description" content="The Bench is a soccer fan app for people who care about the game. Real analysis. No noise. Coming soon.">
-  <meta property="og:title" content="The Bench FC">
-  <meta property="og:description" content="Your seat to the beautiful game. Real analysis. No noise.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://thebenchfc.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    
     body {
       background: #0A0A0A;
       color: #F5F5F7;
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
     }
 
-    .grain {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 100;
-    }
-
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 50;
-      background: rgba(10, 10, 10, 0.8);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: fixed; top: 0; width: 100%; z-index: 50;
+      padding: 16px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
     }
-
-    .nav-logo img {
-      object-fit: contain;
-      height: 32px;
-      width: auto;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #8E8E93;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
+    nav img { height: 56px; }
+    nav .links { display: flex; gap: 28px; }
+    nav .links a {
+      color: #8E8E93; text-decoration: none; font-size: 13px; font-weight: 500;
       transition: color 0.2s;
     }
+    nav .links a:hover { color: #fff; }
 
-    .nav-links a:hover { color: #F5F5F7; }
-
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 120px 40px 80px;
-      max-width: 1400px; margin: 0 auto;
-      gap: 60px;
-    }
-
-    .hero-text {
-      flex: 1;
-      max-width: 520px;
-    }
-
-    .hero-video {
-      flex: 1;
-      max-width: 600px;
-      border-radius: 12px;
+      position: relative;
+      height: 100vh;
+      display: flex; align-items: center;
       overflow: hidden;
     }
-
-    .hero-video video {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 12px;
-      opacity: 0.9;
+    .hero video {
+      position: absolute; top: 50%; left: 50%;
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.35;
     }
-
-    .hero h1 {
-      font-size: clamp(40px, 7vw, 72px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to right, rgba(10,10,10,0.95) 40%, rgba(10,10,10,0.3) 100%);
     }
-
-    .hero h1 .green { color: #4CAF50; }
-
-    .hero p {
-      font-size: 18px;
-      color: #8E8E93;
-      line-height: 1.6;
-      max-width: 520px;
-      margin-bottom: 40px;
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 0 48px;
+      max-width: 640px;
     }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
+    .hero-content h1 {
+      font-size: 64px; font-weight: 800; line-height: 1.05; letter-spacing: -3px;
+      margin-bottom: 20px;
     }
-
-    .btn-primary {
-      background: #4CAF50;
-      color: #0A0A0A;
-      padding: 14px 28px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
+    .hero-content h1 .g { color: #4CAF50; }
+    .hero-content p {
+      font-size: 18px; color: #A0A0A5; line-height: 1.6; margin-bottom: 32px; max-width: 440px;
+    }
+    .hero-cta { display: flex; gap: 12px; }
+    .btn-g {
+      background: #4CAF50; color: #0A0A0A; padding: 14px 28px; border-radius: 6px;
+      font-size: 14px; font-weight: 600; text-decoration: none; border: none; cursor: pointer;
       transition: background 0.2s;
-      border: none;
-      cursor: pointer;
     }
-
-    .btn-primary:hover { background: #43A047; }
-
-    .btn-secondary {
-      background: transparent;
-      color: #F5F5F7;
-      padding: 14px 28px;
-      border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.12);
+    .btn-g:hover { background: #43A047; }
+    .btn-o {
+      background: transparent; color: #F5F5F7; padding: 14px 28px; border-radius: 6px;
+      font-size: 14px; font-weight: 500; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
       transition: border-color 0.2s;
     }
+    .btn-o:hover { border-color: rgba(255,255,255,0.4); }
 
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); }
-
-    section { padding: 80px 40px; }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #4CAF50;
-      margin-bottom: 16px;
+    /* SECTIONS */
+    section { padding: 100px 48px; }
+    .label {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: #4CAF50; margin-bottom: 12px;
     }
+    .stitle { font-size: 32px; font-weight: 700; letter-spacing: -1px; margin-bottom: 12px; }
+    .sdesc { font-size: 16px; color: #8E8E93; line-height: 1.6; max-width: 500px; margin-bottom: 48px; }
 
-    .section-title {
-      font-size: clamp(24px, 4vw, 36px);
-      font-weight: 700;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
+    /* FEATURES */
+    .fgrid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px; overflow: hidden;
     }
+    .fcard { background: #111; padding: 32px; }
+    .fcard h3 { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .fcard p { font-size: 13px; color: #636366; line-height: 1.5; }
 
-    .section-desc {
-      font-size: 16px;
-      color: #8E8E93;
-      line-height: 1.6;
-      max-width: 560px;
-      margin-bottom: 48px;
+    /* SCREENS */
+    .screens { border-top: 1px solid rgba(255,255,255,0.04); }
+    .sgrid { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+    .phone {
+      width: 240px; background: #1A1A1A; border-radius: 28px; padding: 10px;
+      border: 2px solid #222; box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
+    .phone img { width: 100%; border-radius: 18px; display: block; }
+    .plabel { text-align: center; margin-top: 12px; font-size: 12px; color: #636366; font-weight: 500; }
 
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .feature-card {
-      background: #111111;
-      padding: 32px;
-    }
-
-    .feature-icon {
-      width: 36px;
-      height: 36px;
-      background: rgba(76, 175, 80, 0.1);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      color: #4CAF50;
-      font-size: 18px;
-    }
-
-    .feature-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .feature-card p {
-      font-size: 14px;
-      color: #636366;
-      line-height: 1.5;
-    }
-
-    .screens-section {
-      border-top: 1px solid rgba(255,255,255,0.04);
-      overflow: hidden;
-    }
-
-    .screens-grid {
-      display: flex;
-      gap: 32px;
-      justify-content: center;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-
-    .phone-frame {
-      width: 260px;
-      background: #1C1C1E;
-      border-radius: 32px;
-      padding: 12px;
-      border: 2px solid #2C2C2E;
-      box-shadow: 0 24px 48px rgba(0,0,0,0.4);
-    }
-
-    .phone-frame img {
-      width: 100%;
-      border-radius: 20px;
-      display: block;
-    }
-
-    .phone-label {
-      text-align: center;
-      margin-top: 16px;
-      font-size: 13px;
-      color: #636366;
-      font-weight: 500;
-    }
-
-    @media (max-width: 640px) {
-      .phone-frame { width: 220px; }
-      .screens-grid { gap: 20px; }
-    }
-
-    .social-section {
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .social-grid {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .social-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #161616;
-      padding: 16px 24px;
-      border-radius: 8px;
+    /* SOCIAL */
+    .social { border-top: 1px solid rgba(255,255,255,0.04); }
+    .slinks { display: flex; gap: 12px; flex-wrap: wrap; }
+    .slink {
+      display: flex; align-items: center; gap: 10px;
+      background: #141414; padding: 16px 24px; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.06);
-      text-decoration: none;
-      color: #F5F5F7;
-      font-size: 14px;
-      font-weight: 500;
-      transition: border-color 0.2s, background 0.2s;
-      min-width: 180px;
+      text-decoration: none; color: #F5F5F7; font-size: 14px; font-weight: 500;
+      min-width: 180px; transition: border-color 0.2s;
     }
+    .slink:hover { border-color: rgba(255,255,255,0.2); }
+    .slink svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    .slink .h { font-size: 12px; color: #636366; }
 
-    .social-link:hover {
-      border-color: rgba(255,255,255,0.15);
-      background: #1C1C1E;
+    /* APP */
+    .appsec { border-top: 1px solid rgba(255,255,255,0.04); }
+    .appcard {
+      background: #111; border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px; padding: 48px; text-align: center; max-width: 560px;
     }
-
-    .social-link .icon {
-      width: 20px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .appcard .badge {
+      display: inline-block; background: rgba(76,175,80,0.1); color: #4CAF50;
+      font-size: 11px; font-weight: 600; padding: 6px 14px; border-radius: 50px;
+      margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;
     }
-
-    .social-link .handle {
-      color: #636366;
-      font-size: 12px;
-      font-weight: 400;
+    .appcard h3 { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+    .appcard p { color: #8E8E93; font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
+    .wform { display: flex; gap: 8px; max-width: 380px; margin: 0 auto; }
+    .wform input {
+      flex: 1; background: #1C1C1E; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 12px 16px; color: #F5F5F7; font-size: 14px;
+      font-family: 'Inter', sans-serif; outline: none;
     }
-
-    .app-section {
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .app-preview {
-      background: #111111;
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 48px;
-      text-align: center;
-      max-width: 600px;
-    }
-
-    .app-preview .badge {
-      display: inline-block;
-      background: rgba(76, 175, 80, 0.1);
-      color: #4CAF50;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 100px;
-      margin-bottom: 16px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .app-preview h3 {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .app-preview p {
-      color: #8E8E93;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 24px;
-    }
-
-    .waitlist-form {
-      display: flex;
-      gap: 8px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    .waitlist-form input {
-      flex: 1;
-      background: #1C1C1E;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 6px;
-      padding: 12px 16px;
-      color: #F5F5F7;
-      font-size: 14px;
-      font-family: 'Inter', sans-serif;
-      outline: none;
-    }
-
-    .waitlist-form input:focus {
-      border-color: #4CAF50;
-    }
-
-    .waitlist-form input::placeholder {
-      color: #636366;
-    }
+    .wform input:focus { border-color: #4CAF50; }
+    .wform input::placeholder { color: #636366; }
 
     footer {
       border-top: 1px solid rgba(255,255,255,0.04);
-      padding: 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 32px 48px; display: flex; justify-content: space-between; align-items: center;
     }
+    footer p { color: #3A3A3C; font-size: 12px; }
+    footer a { color: #636366; font-size: 12px; text-decoration: none; }
 
-    footer p {
-      color: #3A3A3C;
-      font-size: 12px;
-    }
-
-    footer a {
-      color: #636366;
-      font-size: 12px;
-      text-decoration: none;
-    }
-
-    @media (max-width: 640px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .hero { padding: 100px 20px 60px; flex-direction: column; }
-      .hero-text { max-width: 100%; }
-      .hero-video { max-width: 100%; }
-      .hero-logo { height: 60px; }
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      nav img { height: 40px; }
+      nav .links { display: none; }
+      .hero-content { padding: 0 20px; }
+      .hero-content h1 { font-size: 40px; letter-spacing: -2px; }
       section { padding: 60px 20px; }
+      .fgrid { grid-template-columns: 1fr; }
+      .phone { width: 200px; }
+      .slinks { flex-direction: column; }
+      .slink { min-width: 100%; }
+      .appcard { padding: 32px 20px; }
+      .wform { flex-direction: column; }
       .hero-cta { flex-direction: column; }
-      .btn-primary, .btn-secondary { text-align: center; }
-      .social-grid { flex-direction: column; }
-      .social-link { min-width: 100%; }
-      .app-preview { padding: 32px 20px; }
-      .waitlist-form { flex-direction: column; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .btn-g, .btn-o { text-align: center; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
     }
   </style>
 </head>
 <body>
-  <div class="grain"></div>
-
   <nav>
-    <div class="nav-logo">
-      <img src="bench-logo.png" alt="The Bench">
-    </div>
-    <div class="nav-links">
+    <img src="bench-logo.png" alt="The Bench">
+    <div class="links">
       <a href="#features">Features</a>
       <a href="#social">Follow</a>
       <a href="#app">The App</a>
@@ -420,142 +181,80 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-text">
-      <h1>Your seat to<br>the <span class="green">beautiful game</span></h1>
-      <p>Real analysis. No noise. The Bench is a soccer fan app for people who actually care about the game.</p>
+    <video autoplay muted loop playsinline><source src="hero-video.mp4" type="video/mp4"></video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Your seat to the <span class="g">beautiful game</span></h1>
+      <p>Real analysis. No noise. A soccer fan app for people who actually care about the game.</p>
       <div class="hero-cta">
-        <a href="#app" class="btn-primary">Join the waitlist</a>
-        <a href="#social" class="btn-secondary">Follow us</a>
+        <a href="#app" class="btn-g">Join the waitlist</a>
+        <a href="#social" class="btn-o">Follow us</a>
       </div>
-    </div>
-    <div class="hero-video">
-      <video autoplay muted loop playsinline>
-        <source src="hero-video.mp4" type="video/mp4">
-      </video>
     </div>
   </section>
 
   <section id="features">
-    <div class="section-label">What we do</div>
-    <h2 class="section-title">Built for fans who want more</h2>
-    <p class="section-desc">Not another scores app. The Bench gives you the context, the tactics, and the takes that matter.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">&#9917;</div>
-        <h3>Live match analysis</h3>
-        <p>Real-time tactical breakdowns while you watch. Not just scores. Why the goal happened.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128202;</div>
-        <h3>Smart stats</h3>
-        <p>Stats that tell stories. XG, pressing intensity, defensive shape. The numbers that actually explain the game.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128172;</div>
-        <h3>Fan community</h3>
-        <p>Talk tactics with fans who get it. No toxicity. No spam. Just football.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#127942;</div>
-        <h3>8 leagues covered</h3>
-        <p>Premier League, La Liga, Serie A, Bundesliga, Ligue 1, MLS, Champions League, and the World Cup.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128270;</div>
-        <h3>Transfer intelligence</h3>
-        <p>When a transfer drops, we tell you whether the player actually fits the system. Not just the fee.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">&#128241;</div>
-        <h3>Second screen</h3>
-        <p>Built for matchday. Open The Bench next to the game and never miss a tactical detail again.</p>
-      </div>
+    <div class="label">What we do</div>
+    <h2 class="stitle">Built for fans who want more</h2>
+    <p class="sdesc">Not another scores app. The context, the tactics, and the takes that matter.</p>
+    <div class="fgrid">
+      <div class="fcard"><h3>Live match analysis</h3><p>Real-time tactical breakdowns while you watch. Not just scores. Why the goal happened.</p></div>
+      <div class="fcard"><h3>Smart stats</h3><p>XG, pressing intensity, defensive shape. The numbers that actually explain the game.</p></div>
+      <div class="fcard"><h3>Fan community</h3><p>Talk tactics with fans who get it. No toxicity. No spam. Just football.</p></div>
+      <div class="fcard"><h3>8 leagues covered</h3><p>Premier League, La Liga, Serie A, Bundesliga, Ligue 1, MLS, Champions League, World Cup.</p></div>
+      <div class="fcard"><h3>Transfer intelligence</h3><p>When a transfer drops, we tell you whether the player actually fits the system.</p></div>
+      <div class="fcard"><h3>Second screen</h3><p>Built for matchday. Open The Bench next to the game and never miss a tactical detail.</p></div>
     </div>
   </section>
 
-  <section class="screens-section">
-    <div class="section-label">Inside the app</div>
-    <h2 class="section-title">Every match. Every angle.</h2>
-    <p class="section-desc">Live scores, standings, predictions, fan chat, and news. All in one place.</p>
-    <div class="screens-grid">
-      <div>
-        <div class="phone-frame">
-          <img src="screen-pitch.png" alt="The Pitch - Live matches and predictions">
-        </div>
-        <div class="phone-label">The Pitch</div>
-      </div>
-      <div>
-        <div class="phone-frame">
-          <img src="screen-table.png" alt="The Table - Standings across 8 leagues">
-        </div>
-        <div class="phone-label">The Table</div>
-      </div>
-      <div>
-        <div class="phone-frame">
-          <img src="screen-tunnel.png" alt="The Tunnel - Football news and analysis">
-        </div>
-        <div class="phone-label">The Tunnel</div>
-      </div>
+  <section class="screens">
+    <div class="label">Inside the app</div>
+    <h2 class="stitle">Every match. Every angle.</h2>
+    <p class="sdesc">Live scores, standings, predictions, fan chat, and news. All in one place.</p>
+    <div class="sgrid">
+      <div><div class="phone"><img src="screen-pitch.png" alt="The Pitch"></div><div class="plabel">The Pitch</div></div>
+      <div><div class="phone"><img src="screen-table.png" alt="The Table"></div><div class="plabel">The Table</div></div>
+      <div><div class="phone"><img src="screen-tunnel.png" alt="The Tunnel"></div><div class="plabel">The Tunnel</div></div>
     </div>
   </section>
 
-  <section id="social" class="social-section">
-    <div class="section-label">Follow the conversation</div>
-    <h2 class="section-title">Find us everywhere</h2>
-    <p class="section-desc">Daily takes, tactical breakdowns, and World Cup coverage across every platform.</p>
-    <div class="social-grid">
-      <a href="https://x.com/thebenchfc" target="_blank" class="social-link">
-        <div class="icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        </div>
-        <div>
-          <div>X / Twitter</div>
-          <div class="handle">@thebenchfc</div>
-        </div>
+  <section id="social" class="social">
+    <div class="label">Follow the conversation</div>
+    <h2 class="stitle">Find us everywhere</h2>
+    <p class="sdesc">Daily takes, tactical breakdowns, and World Cup coverage across every platform.</p>
+    <div class="slinks">
+      <a href="https://x.com/thebenchfc" target="_blank" class="slink">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <div><div>X / Twitter</div><div class="h">@thebenchfc</div></div>
       </a>
-      <a href="https://instagram.com/thebenchfootball" target="_blank" class="social-link">
-        <div class="icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </div>
-        <div>
-          <div>Instagram</div>
-          <div class="handle">@thebenchfootball</div>
-        </div>
+      <a href="https://instagram.com/thebenchfootball" target="_blank" class="slink">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <div><div>Instagram</div><div class="h">@thebenchfootball</div></div>
       </a>
-      <a href="https://threads.net/@thebenchfootball" target="_blank" class="social-link">
-        <div class="icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.749-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.17.408-2.243 1.33-3.023.81-.685 1.91-1.093 3.28-1.212 1.042-.091 2.009-.028 2.888.189-.089-.584-.253-1.047-.497-1.39-.39-.55-1.04-.838-1.93-.857h-.063c-.664 0-1.536.178-2.178.825l-1.446-1.394c.897-.932 2.09-1.445 3.358-1.445h.096c1.534.034 2.718.635 3.42 1.738.594.935.876 2.178.839 3.698v.147c.902.471 1.636 1.124 2.136 1.955.66 1.096.907 2.474.716 3.986-.264 2.087-1.189 3.77-2.748 5.007C18.04 23.268 15.592 23.98 12.186 24zm-1.248-7.673c-.064 0-.127.002-.19.005-1.735.095-2.592.853-2.55 1.612.022.396.231.872.834 1.262.674.437 1.578.614 2.387.566 1.08-.059 1.907-.455 2.457-1.14.375-.467.65-1.085.822-1.85-.73-.253-1.572-.399-2.495-.446-.423-.024-.852-.024-1.265-.01z"/></svg>
-        </div>
-        <div>
-          <div>Threads</div>
-          <div class="handle">@thebenchfootball</div>
-        </div>
+      <a href="https://threads.net/@thebenchfootball" target="_blank" class="slink">
+        <svg viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.749-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.17.408-2.243 1.33-3.023.81-.685 1.91-1.093 3.28-1.212 1.042-.091 2.009-.028 2.888.189-.089-.584-.253-1.047-.497-1.39-.39-.55-1.04-.838-1.93-.857h-.063c-.664 0-1.536.178-2.178.825l-1.446-1.394c.897-.932 2.09-1.445 3.358-1.445h.096c1.534.034 2.718.635 3.42 1.738.594.935.876 2.178.839 3.698v.147c.902.471 1.636 1.124 2.136 1.955.66 1.096.907 2.474.716 3.986-.264 2.087-1.189 3.77-2.748 5.007C18.04 23.268 15.592 23.98 12.186 24zm-1.248-7.673c-.064 0-.127.002-.19.005-1.735.095-2.592.853-2.55 1.612.022.396.231.872.834 1.262.674.437 1.578.614 2.387.566 1.08-.059 1.907-.455 2.457-1.14.375-.467.65-1.085.822-1.85-.73-.253-1.572-.399-2.495-.446-.423-.024-.852-.024-1.265-.01z"/></svg>
+        <div><div>Threads</div><div class="h">@thebenchfootball</div></div>
       </a>
-      <a href="https://reddit.com/u/thebenchfc" target="_blank" class="social-link">
-        <div class="icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-        </div>
-        <div>
-          <div>Reddit</div>
-          <div class="handle">u/thebenchfc</div>
-        </div>
+      <a href="https://reddit.com/u/thebenchfc" target="_blank" class="slink">
+        <svg viewBox="0 0 24 24"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+        <div><div>Reddit</div><div class="h">u/thebenchfc</div></div>
       </a>
     </div>
   </section>
 
-  <section id="app" class="app-section">
-    <div class="section-label">The app</div>
-    <h2 class="section-title">Coming this summer</h2>
-    <p class="section-desc">The Bench launches on iOS in August 2026. $5/month. Eight leagues. Every match. All the context you need.</p>
-    <div class="app-preview">
+  <section id="app" class="appsec">
+    <div class="label">The app</div>
+    <h2 class="stitle">Coming this summer</h2>
+    <p class="sdesc">iOS. August 2026. $5/month. Eight leagues. Every match.</p>
+    <div class="appcard">
       <div class="badge">Coming August 2026</div>
       <h3>Get early access</h3>
-      <p>Join the waitlist and be first to download when we launch on the App Store.</p>
-      <form class="waitlist-form" id="waitlistForm">
-        <input type="email" placeholder="your@email.com" required id="emailInput">
-        <button type="submit" class="btn-primary">Join</button>
+      <p>Join the waitlist and be first to download when we launch.</p>
+      <form class="wform" id="wf">
+        <input type="email" placeholder="your@email.com" required id="ei">
+        <button type="submit" class="btn-g">Join</button>
       </form>
-      <p id="waitlistSuccess" style="display:none; color: #4CAF50; margin-top: 16px; font-size: 14px;">You're on the list.</p>
+      <p id="ws" style="display:none;color:#4CAF50;margin-top:16px;font-size:14px;">You're on the list.</p>
     </div>
   </section>
 
@@ -565,11 +264,10 @@
   </footer>
 
   <script>
-    document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+    document.getElementById('wf').addEventListener('submit',function(e){
       e.preventDefault();
-      var email = document.getElementById('emailInput').value;
-      document.getElementById('waitlistForm').style.display = 'none';
-      document.getElementById('waitlistSuccess').style.display = 'block';
+      document.getElementById('wf').style.display='none';
+      document.getElementById('ws').style.display='block';
     });
   </script>
 </body>
