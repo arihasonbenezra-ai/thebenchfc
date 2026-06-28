@@ -46,7 +46,7 @@
     }
 
     .nav-logo img {
-      height: 64px;
+      height: 32px;
       width: auto;
     }
 
@@ -69,16 +69,31 @@
     .hero {
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
       padding: 120px 40px 80px;
-      max-width: 900px;
+      max-width: 1200px;
+      gap: 60px;
     }
 
-    .hero-logo {
-      height: 80px;
-      width: auto;
-      margin-bottom: 40px;
+    .hero-text {
+      flex: 1;
+      max-width: 520px;
+    }
+
+    .hero-video {
+      flex: 1;
+      max-width: 500px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .hero-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      opacity: 0.85;
     }
 
     .hero h1 {
@@ -374,7 +389,9 @@
     @media (max-width: 640px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      .hero { padding: 100px 20px 60px; }
+      .hero { padding: 100px 20px 60px; flex-direction: column; }
+      .hero-text { max-width: 100%; }
+      .hero-video { max-width: 100%; }
       .hero-logo { height: 60px; }
       section { padding: 60px 20px; }
       .hero-cta { flex-direction: column; }
@@ -402,11 +419,18 @@
   </nav>
 
   <section class="hero">
-    <h1>Your seat to<br>the <span class="green">beautiful game</span></h1>
-    <p>Real analysis. No noise. The Bench is a soccer fan app for people who actually care about the game.</p>
-    <div class="hero-cta">
-      <a href="#app" class="btn-primary">Join the waitlist</a>
-      <a href="#social" class="btn-secondary">Follow us</a>
+    <div class="hero-text">
+      <h1>Your seat to<br>the <span class="green">beautiful game</span></h1>
+      <p>Real analysis. No noise. The Bench is a soccer fan app for people who actually care about the game.</p>
+      <div class="hero-cta">
+        <a href="#app" class="btn-primary">Join the waitlist</a>
+        <a href="#social" class="btn-secondary">Follow us</a>
+      </div>
+    </div>
+    <div class="hero-video">
+      <video autoplay muted loop playsinline>
+        <source src="hero-video.mp4" type="video/mp4">
+      </video>
     </div>
   </section>
 
