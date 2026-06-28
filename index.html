@@ -46,7 +46,7 @@
     }
 
     .nav-logo img {
-      height: 64px;
+      height: 32px;
       width: auto;
     }
 
@@ -76,9 +76,9 @@
     }
 
     .hero-logo {
-      height: 64px;
+      height: 80px;
       width: auto;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .hero h1 {
@@ -96,7 +96,7 @@
       color: #8E8E93;
       line-height: 1.6;
       max-width: 520px;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
     }
 
     .hero-cta {
@@ -198,6 +198,47 @@
       font-size: 14px;
       color: #636366;
       line-height: 1.5;
+    }
+
+    .screens-section {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      overflow: hidden;
+    }
+
+    .screens-grid {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .phone-frame {
+      width: 260px;
+      background: #1C1C1E;
+      border-radius: 32px;
+      padding: 12px;
+      border: 2px solid #2C2C2E;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+    }
+
+    .phone-frame img {
+      width: 100%;
+      border-radius: 20px;
+      display: block;
+    }
+
+    .phone-label {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #636366;
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .phone-frame { width: 220px; }
+      .screens-grid { gap: 20px; }
     }
 
     .social-section {
@@ -361,7 +402,7 @@
   </nav>
 
   <section class="hero">
-    
+    <img src="bench-logo.png" alt="The Bench" class="hero-logo">
     <h1>Your seat to<br>the <span class="green">beautiful game</span></h1>
     <p>Real analysis. No noise. The Bench is a soccer fan app for people who actually care about the game.</p>
     <div class="hero-cta">
@@ -408,6 +449,32 @@
     </div>
   </section>
 
+  <section class="screens-section">
+    <div class="section-label">Inside the app</div>
+    <h2 class="section-title">Every match. Every angle.</h2>
+    <p class="section-desc">Live scores, standings, predictions, fan chat, and news. All in one place.</p>
+    <div class="screens-grid">
+      <div>
+        <div class="phone-frame">
+          <img src="screen-pitch.png" alt="The Pitch - Live matches and predictions">
+        </div>
+        <div class="phone-label">The Pitch</div>
+      </div>
+      <div>
+        <div class="phone-frame">
+          <img src="screen-table.png" alt="The Table - Standings across 8 leagues">
+        </div>
+        <div class="phone-label">The Table</div>
+      </div>
+      <div>
+        <div class="phone-frame">
+          <img src="screen-tunnel.png" alt="The Tunnel - Football news and analysis">
+        </div>
+        <div class="phone-label">The Tunnel</div>
+      </div>
+    </div>
+  </section>
+
   <section id="social" class="social-section">
     <div class="section-label">Follow the conversation</div>
     <h2 class="section-title">Find us everywhere</h2>
@@ -428,16 +495,16 @@
         </div>
         <div>
           <div>Instagram</div>
-          <div class="handle">@thebenchfcl</div>
+          <div class="handle">@thebenchfootball</div>
         </div>
       </a>
-      <a href="https://threads.net/@thebenchfcl" target="_blank" class="social-link">
+      <a href="https://threads.net/@thebenchfootball" target="_blank" class="social-link">
         <div class="icon">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.749-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.17.408-2.243 1.33-3.023.81-.685 1.91-1.093 3.28-1.212 1.042-.091 2.009-.028 2.888.189-.089-.584-.253-1.047-.497-1.39-.39-.55-1.04-.838-1.93-.857h-.063c-.664 0-1.536.178-2.178.825l-1.446-1.394c.897-.932 2.09-1.445 3.358-1.445h.096c1.534.034 2.718.635 3.42 1.738.594.935.876 2.178.839 3.698v.147c.902.471 1.636 1.124 2.136 1.955.66 1.096.907 2.474.716 3.986-.264 2.087-1.189 3.77-2.748 5.007C18.04 23.268 15.592 23.98 12.186 24zm-1.248-7.673c-.064 0-.127.002-.19.005-1.735.095-2.592.853-2.55 1.612.022.396.231.872.834 1.262.674.437 1.578.614 2.387.566 1.08-.059 1.907-.455 2.457-1.14.375-.467.65-1.085.822-1.85-.73-.253-1.572-.399-2.495-.446-.423-.024-.852-.024-1.265-.01z"/></svg>
         </div>
         <div>
           <div>Threads</div>
-          <div class="handle">@thebenchfcl</div>
+          <div class="handle">@thebenchfootball</div>
         </div>
       </a>
       <a href="https://reddit.com/u/thebenchfc" target="_blank" class="social-link">
