@@ -109,7 +109,10 @@
     .plabel { text-align: center; margin-top: 12px; font-size: 12px; color: #636366; font-weight: 500; }
 
     /* SOCIAL */
-    .social { border-top: 1px solid rgba(255,255,255,0.04); }
+    .social { border-top: 1px solid rgba(255,255,255,0.04); padding: 56px 48px; }
+    .social .stitle { font-size: 22px; margin-bottom: 8px; }
+    .social .sdesc { font-size: 14px; margin-bottom: 24px; }
+    .social .slink { padding: 12px 20px; min-width: 0; }
     .slinks { display: flex; gap: 12px; flex-wrap: wrap; }
     .slink {
       display: flex; align-items: center; gap: 10px;
@@ -160,6 +163,7 @@
       .hero-content { padding: 0 20px; }
       .hero-content h1 { font-size: 40px; letter-spacing: -2px; }
       section { padding: 60px 20px; }
+      .social { padding: 40px 20px; }
       .fgrid { grid-template-columns: 1fr; }
       .phone { width: 200px; }
       .slinks { flex-direction: column; }
@@ -222,18 +226,6 @@
     </div>
   </section>
 
-  <section id="social" class="social">
-    <div class="label">Follow the conversation</div>
-    <h2 class="stitle">Follow us</h2>
-    <p class="sdesc">Daily football news, takes, analysis, and plenty of opinions worth arguing about.</p>
-    <div class="slinks">
-      <a href="https://x.com/thebenchfc" target="_blank" class="slink">
-        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-        <div><div>X / Twitter</div><div class="h">@thebenchfc</div></div>
-      </a>
-    </div>
-  </section>
-
   <section id="app" class="appsec">
     <div class="label">The app</div>
     <h2 class="stitle">Launching September 2026</h2>
@@ -247,6 +239,18 @@
         <button type="submit" class="btn-g">Join</button>
       </form>
       <p id="ws" style="display:none;color:#A8FF35;margin-top:16px;font-size:14px;">You're on the list.</p>
+    </div>
+  </section>
+
+  <section id="social" class="social">
+    <div class="label">Follow the conversation</div>
+    <h2 class="stitle">Follow us</h2>
+    <p class="sdesc">Daily football news, takes, analysis, and plenty of opinions worth arguing about.</p>
+    <div class="slinks">
+      <a href="https://x.com/thebenchfc" target="_blank" class="slink">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        <div><div>X / Twitter</div><div class="h">@thebenchfc</div></div>
+      </a>
     </div>
   </section>
 
