@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support | The Bench FC</title>
+  <meta name="description" content="Get help with The Bench — contact support, report a bug, or find answers to common questions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0A0A0A;
+      color: #F5F5F7;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 50;
+      padding: 12px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(16px);
+    }
+    nav img { height: 64px; }
+    nav .links { display: flex; gap: 28px; }
+    nav .links a {
+      color: #8E8E93; text-decoration: none; font-size: 13px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav .links a:hover { color: #fff; }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 160px 48px 100px;
+    }
+    .label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #A8FF35; margin-bottom: 12px;
+    }
+    h1 { font-size: 40px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 16px; }
+    .lede { font-size: 16px; color: #A0A0A5; line-height: 1.6; margin-bottom: 48px; max-width: 520px; }
+
+    .contact-card {
+      background: #131315;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-card div h2 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .contact-card div p { font-size: 13px; color: #9AA0A6; }
+    .contact-card a.btn {
+      background: #A8FF35; color: #0A0A0A; padding: 12px 24px; border-radius: 6px;
+      font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .contact-card a.btn:hover { background: #96E62E; }
+
+    h3 { font-size: 13px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #636366; margin-bottom: 20px; }
+    .faq { margin-bottom: 40px; }
+    .faq-item { border-top: 1px solid rgba(255,255,255,0.06); padding: 20px 0; }
+    .faq-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .faq-item .q { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .faq-item .a { font-size: 14px; color: #9AA0A6; line-height: 1.6; }
+    .faq-item .a a { color: #A8FF35; text-decoration: none; }
+    .faq-item .a a:hover { text-decoration: underline; }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 32px 48px; display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { color: #9AA0A6; font-size: 12px; }
+    footer .flinks { display: flex; gap: 20px; }
+    footer a { color: #9AA0A6; font-size: 12px; text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      nav img { height: 48px; }
+      nav .links { display: none; }
+      main { padding: 120px 20px 60px; }
+      h1 { font-size: 30px; letter-spacing: -1px; }
+      .contact-card { flex-direction: column; align-items: flex-start; }
+      footer { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html"><img src="bench-header.png" alt="The Bench"></a>
+    <div class="links">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#app">The App</a>
+      <a href="https://x.com/thebenchfc" target="_blank">Follow</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="label">Support</div>
+    <h1>We're here to help.</h1>
+    <p class="lede">Questions about The Bench, a bug you've run into, or something that isn't working the way it should — reach out and we'll get back to you.</p>
+
+    <div class="contact-card">
+      <div>
+        <h2>Email support</h2>
+        <p>support@senylabs.io &middot; we typically reply within a day</p>
+      </div>
+      <a class="btn" href="mailto:support@senylabs.io">Email us</a>
+    </div>
+
+    <h3>Common questions</h3>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="q">Do I need an account to use The Bench?</div>
+        <div class="a">Yes — creating a free account lets your followed teams, predictions, and points sync to your account and carry over if you reinstall or switch devices.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">How do I delete my account?</div>
+        <div class="a">Open the app, go to Settings, and choose Delete Account. This permanently removes your account and data and can't be undone.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">I found a bug or something looks wrong.</div>
+        <div class="a">Please email <a href="mailto:support@senylabs.io">support@senylabs.io</a> with what you saw and, if you can, a screenshot — it helps us fix it faster.</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">Is The Bench affiliated with any club or league?</div>
+        <div class="a">No. The Bench is an independent fan app. It is not affiliated with, endorsed by, or sponsored by any football club, league, or federation.</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 The Bench FC. Built by Seny Labs.</p>
+    <div class="flinks">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </footer>
+</body>
+</html>
