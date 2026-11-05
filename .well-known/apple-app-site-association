@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["95Y8Y56NQH.com.senylabs.thebench"],
+        "components": [
+          { "/": "/join/*", "comment": "Invite a friend into a Terrace room" },
+          { "/": "/match/*", "comment": "Shared match / prediction cards" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["95Y8Y56NQH.com.senylabs.thebench"]
+  }
+}
